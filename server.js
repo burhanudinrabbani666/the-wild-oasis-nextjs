@@ -1,28 +1,3 @@
-# Manual SSR
-
-This react still just render static html element not whit the state
-
-```json
-// babel.config.json
-{
-  "presets": ["@babel/preset-react"]
-}
-```
-
-```js
-// start.js
-require("@babel/register")({ extensions: [".js", ".jsx"] });
-
-require("./server.js");
-```
-
-```bash
-node --watch ./start.js
-
-```
-
-```js
-//server.js
 const { readFileSync } = require("fs");
 const { createServer } = require("http");
 const { parse } = require("url");
@@ -108,6 +83,3 @@ const server = createServer((req, res) => {
 });
 
 server.listen(8000, () => console.log("Listening for request on port 8000"));
-```
-
-Next: [Hydration](./03-hydration.md)
