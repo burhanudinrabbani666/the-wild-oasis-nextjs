@@ -1,8 +1,6 @@
-const { readFileSync } = require("fs");
-const { createServer } = require("http");
-const { parse } = require("url");
-const { renderToString } = require("react-dom/server");
-const React = require("react");
+console.log("hello");
+
+ReactDOM.hydrateRoot(document.getElementById("root"), <Home />);
 
 const pizzas = [
   {
@@ -63,25 +61,3 @@ function MenuItem({ pizza }) {
     </li>
   );
 }
-
-const htmlTemplate = readFileSync(`${__dirname}/index.html`, "utf-8");
-const clientJs = readFileSync(`${__dirname}/client.js`, "utf-8");
-
-const server = createServer((req, res) => {
-  const pathName = parse(req.url, true).pathname;
-
-  if (pathName === "/") {
-    const renderHtml = renderToString(<Home />);
-    const html = htmlTemplate.replace("Content", renderHtml);
-
-    res.writeHead(200, { "content-type": "text/html" });
-    res.end(html);
-  } else if (pathName === "/client.js") {
-    res.writeHead(200, { "content-type": "application/javascript" });
-    res.end(clientJs);
-  } else {
-    res.end("url not found!");
-  }
-});
-
-server.listen(8000, () => console.log("Listening for request on port 8000"));
