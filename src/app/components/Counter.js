@@ -1,8 +1,3 @@
-# Adding interactive client components
-
-using `"use client"` in top of Components for make the server can use state.
-
-```js
 "use client";
 
 import { useState } from "react";
@@ -19,6 +14,3 @@ export default function Counter({ users }) {
     </div>
   );
 }
-```
-
-Next: [Displaying a loading indicator](./15-displaying-a-loading-indicator.md)
