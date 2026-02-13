@@ -6,7 +6,7 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>Cabins Page</h1>
+      <h1 className="text-4xl py-6">Cabins Page</h1>
 
       <ul>
         {data.map((user) => {
